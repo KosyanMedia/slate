@@ -49,7 +49,7 @@ podTemplate(
       stage("Deploy") {
         container('ruby') {
           withCredentials([file(credentialsId: 'hackaton2019-ssh-key', variable: 'SecretFile')]) {
-            sh "scp -r -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -P2200 build/* hackaton2019@hackaton2019.aviasales.ru:~/data/www/hackaton2019.aviasales.ru/"
+            sh "scp -r -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -P2200 build/* hackaton2019@php2.int.avs.io:~/data/www/hackaton2019.aviasales.ru/"
           }
         }
       }
