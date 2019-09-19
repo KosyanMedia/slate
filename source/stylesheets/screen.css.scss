@@ -76,6 +76,7 @@ html, body {
     display: block;
     max-width: 40%;
     margin-bottom: $logo-margin;
+    margin-top: $logo-margin;
     margin-left: 60px;
   }
 
@@ -98,7 +99,7 @@ html, body {
     &:before {
       position: absolute;
       top: 17px;
-      left: $nav-padding;
+      left: $nav-v-padding;
       color: #141313;
       @extend %icon-search;
     }
