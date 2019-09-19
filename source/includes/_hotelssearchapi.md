@@ -87,7 +87,7 @@ response = requests.request("GET", url, headers=headers, params=querystring)
 print(response.text)
 ```
 
-where **signature** is md5 of the string: "*YourToken:YourMarker:adultsCount:checkIn:checkOut:childAge1:childrenCount:currency:customerIP:iata:lang:waitForResult*". 
+where **signature** is md5 of the string: `YourToken:YourMarker:adultsCount:checkIn:checkOut:childAge1:childrenCount:currency:customerIP:iata:lang:waitForResult`
 
 More information about the signature is available [here](https://support.travelpayouts.com/hc/en-us/articles/210995998).
 
@@ -148,7 +148,7 @@ Required parameters are highlighted in **bold**.
 http://engine.hotellook.com/api/v2/search/getResult.json?searchId=4034914&limit=10&sortBy=price&sortAsc=1&roomsCount=0&offset=0&marker=PasteYourMarkerHere&signature=364c38baee5cf11b382297bfd4338ce6
 ```
 
-where **signature** is md5 of the string: *"YourToken:YourMarker:limit:offset:roomsCount:searchId:sortAsc:sortBy"*. 
+where **signature** is md5 of the string: `YourToken:YourMarker:limit:offset:roomsCount:searchId:sortAsc:sortBy`. 
 
 ### Request parameters
 
