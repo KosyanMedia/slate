@@ -99,7 +99,7 @@ html, body {
     &:before {
       position: absolute;
       top: 17px;
-      left: $nav-v-padding;
+      left: 20px;
       color: #141313;
       @extend %icon-search;
     }
