@@ -1,12 +1,12 @@
 # Flight Data Access API v1
 
-Dates are accepted in the formats YYYY-MM and YYYY-MM-DD.
-
 The server response is always sent in JSON format with the following structure:
 
   - **success** – true for a successful request, false in case of errors;
   - **data** – a result of the request; in case of an error is equal to null;
   - **error** – short description of the error that prevented request completion; for a successful request is equal to null.
+
+Dates (in requests) are accepted in the formats YYYY-MM and YYYY-MM-DD.
 
 Dates and times are given in UTC, formatted according to [ISO 8601](https://ru.wikipedia.org/wiki/ISO_8601). Prices are given in rubles as of when the ticket is put in the search results. It is not recommended to use expired prices (the approximate expiration date is given in the value of the expires_at parameter).
 
