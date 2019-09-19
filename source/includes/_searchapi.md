@@ -26,8 +26,6 @@ We'll also need to see the URL of your project, design prototypes, a description
 
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/3438c693f7bfb0c14368)
 
-### Request parameters
-
 > Body example
 
 ```json
@@ -58,6 +56,8 @@ We'll also need to see the URL of your project, design prototypes, a description
 } 
 ```
 
+### Request parameters
+
 Parameter | Type | Description
 --------- | ------- | -----------
 **marker** | string | the unique identifier of the affiliate. You can find your marker in the affiliate personal account
@@ -83,7 +83,7 @@ curl -v -X POST -d '{"signature":"%MD5_signature%","marker":"%Put_Your_Marker_He
 
 ### Response
 
-The answer comes in JSON format. The response contains the parameters:
+> The answer comes in JSON format. The response contains the parameters:
 
 ```json
 {
@@ -201,48 +201,7 @@ Parameter | Description
 
 To get "One-way" tickets, add a JSON into the body of the request.
 
-### Body example
-
-```json
-{
-    "signature": "%MD5_signature%",
-    "marker": "%Put_Your_Marker_Here%",
-    "host": "beta.as.ru",
-    "user_ip": "127.0.0.1",
-    "locale": "ru",
-    "trip_class": "Y",
-    "passengers": {
-        "adults": 1,
-        "children": 0,
-        "infants": 0
-    },
-    "segments": [
-        {
-            "origin": "MOW",
-            "destination": "LED",
-            "date": "2017-06-18"
-        }
-    ]
-}
-```
-
-To get data, use the initialization code of the search:
-
-> Request example
-
-```shell
-curl -v -X POST -d '{"signature":"%MD5_signature%","marker":"%Put_Your_Marker_Here%","host":"beta.as.ru","user_ip":"127.0.0.1","locale":"ru","trip_class":"Y","passengers":{"adults":1,"children":0,"infants":0},"segments":[{"origin":"MOW","destination":"LED","date":"2017-06-18"}]}' -H 'Content-type:application/json' https://api.travelpayouts.com/v1/flight_search
-```
-
-## Open jaw
-
-### Request initialization
-
-Open jaw is a round-trip ticket in which the traveller does not arrive in the same city of departure and/or does not depart from the same city where he/she first landed. For example, London - Paris - Berlin - London.
-
-To get "Open jaw" tickets, add a JSON into the body of the request:
-
-### Body example
+> Body example
 
 ```json
 {
@@ -284,6 +243,22 @@ Parameter | Type | Description
 **currency** | string | the currency in which the price of the ticket is displayed, after switching to the agency's website (provided that the agency supports this currency);
 **signature** | string | the request signature is constructed from token, marker, and all the values of the query parameters sorted alphabetically and separated by a colon. Learn how to create a signature look here.
 
+To get data, use the initialization code of the search:
+
+> Request example
+
+```shell
+curl -v -X POST -d '{"signature":"%MD5_signature%","marker":"%Put_Your_Marker_Here%","host":"beta.as.ru","user_ip":"127.0.0.1","locale":"ru","trip_class":"Y","passengers":{"adults":1,"children":0,"infants":0},"segments":[{"origin":"MOW","destination":"LED","date":"2017-06-18"}]}' -H 'Content-type:application/json' https://api.travelpayouts.com/v1/flight_search
+```
+
+## Open jaw
+
+### Request initialization
+
+Open jaw is a round-trip ticket in which the traveller does not arrive in the same city of departure and/or does not depart from the same city where he/she first landed. For example, London - Paris - Berlin - London.
+
+To get "Open jaw" tickets, add a JSON into the body of the request:
+
 > Body example
 
 ```json
@@ -319,6 +294,23 @@ Parameter | Type | Description
 }
 ```
 
+### Request parameters
+
+Parameter | Type | Description
+--------- | ------- | -----------
+**marker** | string | the unique identifier of the affiliate. You can find your marker in the affiliate personal account
+**host** | string | host's request (must be replaced by the address of your website where the API will be used)
+**user_ip** | string | user's IP address
+**locale** | string | language of the search result (en-us, en-gb, ru, de, es, fr, pl). Аrom the locale depends on the set of agencies on which the search is performed
+**trip_class** | string | flight class (Y – Economy, C – Business)
+**passengers** | - | passenger Information
+**adults** | integer | the number of adult passengers (from 1 to 9)
+**children** | integer | the number of children (from 0 to 6)
+**infants** | integer | the number of infants (from 0 to 6)
+**segments** | - | a list of the trip components: <li>**origin** (string) - origin IATA or string "City, Country (IATA)". The IATA code is shown in uppercase letters (for example, "Paris, France (PAR)");</li><li>**destination** (string) - destination IATA or string "City, Country (IATA)". The IATA code is shown in uppercase letters (for example, "Berlin, Germany (BER)");</l><li>**date** (date) - departure date yyyy-mm-dd (for example, "2015-09-08");</li>
+**currency** | string | the currency in which the price of the ticket is displayed, after switching to the agency's website (provided that the agency supports this currency);
+**signature** | string | the request signature is constructed from token, marker, and all the values of the query parameters sorted alphabetically and separated by a colon. Learn how to create a signature look here.
+
 To get data, use the initialization code of the search:
 
 > Request example
@@ -329,11 +321,13 @@ curl -v -X POST -d '{"signature":"%MD5_signature%","marker":"%Put_Your_Marker_He
 
 ## Getting search results
 
-In the body of the response is the parameter search_id; insert it into the URL:
+In the body of the response is the parameter **search_id**; insert it into the URL:
 
 https://api.travelpayouts.com/v1/flight_search_results?uuid=%search_id%
 
 Then send the request to the server for search results:
+
+`GET https://api.travelpayouts.com/v1/flight_search_results?uuid=%search_id%`
 
 > Request example
 
@@ -346,11 +340,11 @@ curl -v -H 'Accept-Encoding:gzip,deflate,sdch' https://api.travelpayouts.com/v1/
 
 <aside class="warning">Repeat the request until you get an associative array with one element search_id. The periodicity of sending requests isn't restricted. </aside>
 
-### Example of answer
+### Request example
 
 <aside class="warning">Attention! The link to the search results is relevant for 15 minutes. After this time, you must send a search query again.</aside>
 
->Response example
+> Response example
 
 ```json
 [{
@@ -619,16 +613,23 @@ checkin | - | ways to register provided by an airline company: <li>**mobileCheck
 
 <aside class="warning">Attention! The reference to the agency's website must be received only when the user clicks the "Buy" button. Automatic collection of all links from the answer is prohibited. Violation of this rule will disable the API search for the partner. </aside>
 
-To get a link to the site of the ticket booking agencies:
+> Request example
 
-1. Send a request to the following address:
-https://api.travelpayouts.com/v1/flight_searches/%search_id%/clicks/%terms.url%.json
+```shell
+curl -v -H 'Accept-Encoding:gzip,deflate,sdch' https://api.travelpayouts.com/v1/flight_searches/%search_id%/clicks/%terms.url%.json 
+--compressed
+```
 
-where `search_id` is the ID from the answer of the request, `terms.url` - URL parameter from the response.
+To get a link to the site of the ticket booking agencies send a request to the following address:
 
-2. You will receive a response like this:
+`GET https://api.travelpayouts.com/v1/flight_searches/%search_id%/clicks/%terms.url%.json`
 
->Response example
+where **search_id** is the ID from the answer of the request, **terms.url** - URL parameter from the response.
+
+You will receive a response like in the example.
+
+> Response example
+
 ```json
 {
     "params": {},
@@ -638,10 +639,11 @@ where `search_id` is the ID from the answer of the request, `terms.url` - URL pa
     "click_id": 22135952358110
 }
 ```
+
 To move on to the booking, give your visitors a link from the parameter `"url"`.
 
 The “lifetime” of such links is 15 minutes, after which you will need to search again for the current prices and generate a new reference to the transition.
 
 In our example, this is a link of the form:
 
-https://www.svyaznoy.travel/?utm_source=as.ru&utm_medium=cpa&utm_campaign=meta_avia#MOW0906/BKK1506/A1/C0/I0/S0/22316/EK-132;EK-374/EK-373;EK-131&marker=7uh46i0v2
+`https://www.svyaznoy.travel/?utm_source=as.ru&utm_medium=cpa&utm_campaign=meta_avia#MOW0906/BKK1506/A1/C0/I0/S0/22316/EK-132;EK-374/EK-373;EK-131&marker=7uh46i0v2`
