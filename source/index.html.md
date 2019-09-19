@@ -30,7 +30,7 @@ search: true
 
 Aviasales API – the way to get travel insights for your website or blog. You can get flight price trends and find popular destinations for your customers; find information about hotels (price, location, name, type, stars and many nore); get routes schedule and visa data.
 
-Here you can find some websites that work with Aviasales and Hotellook API:
+Here you can find some websites that work with Aviasales API:
 
  * [www.flightscanner.com](https://www.flightscanner.com)
  * [www.flaut.ru](https://www.flaut.ru/)
