@@ -1,7 +1,7 @@
 # Some data in JSON format
 
 <aside class="notice">
-Note! Additionally we created translations for different languages for all data https://api.travelpayouts.com/data/
+Note! Additionally we created translations for different languages for all data [https://api.travelpayouts.com/data/](https://api.travelpayouts.com/data/)
 </aside>
 
 ## Data of countries in JSON format
