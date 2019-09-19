@@ -18,21 +18,30 @@ includes:
   - dataapijson
   - searchapi
   - hotelsdata
-  - stathotelsdata
+  - hotelstatdata
   - hotelssearchapi
   - hotelapierrors
+  - additional
 
 search: true
 ---
 
 # About API
 
-Travelpayouts Data API – the way to get travel insights for your site or blog. You can get flight price trends and find popular destinations for your customers.
+Aviasales and Hotellook API – the way to get travel insights for your website or blog. You can get flight price trends and find popular destinations for your customers; find information about hotels (price, location, name, type, stars and many nore); get routes schedule and visa data.
+
+Here you can find some websites thats work with Aviasales and Hotellook API:
+
+ * [www.flightscanner.com](https://www.flightscanner.com)
+ * [www.flaut.ru](https://www.flaut.ru/)
+ * [www.skyexplorer.de](https://www.skyexplorer.de/)
+ * [aviapoisk.ru](https://aviapoisk.ru/)
+ * [avionero.com](https://avionero.com)
 
 To access the API you should be [registered](https://travelpayouts.com/) in our travel affiliate program.
 
 <aside class="notice">
-Dear partners! Attention, the data is transferred from the cache, so it is recommended to use them to generate static pages.
+Dear partners! Attention, the data is transferred from the cache (except for search flights and hotels API), so it is recommended to use them to generate static pages.
 </aside>
 
-To access the API you must pass your token in the X-Access-Token header or in the token parameter. To obtain a token for the Data Access API, go to [http://www.travelpayouts.com/developers/api](http://www.travelpayouts.com/developers/api).
+To access the API you must pass your token in the X-Access-Token header or in the token parameter. To obtain a token API, go to [http://www.travelpayouts.com/developers/api](http://www.travelpayouts.com/developers/api).
