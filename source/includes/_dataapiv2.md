@@ -665,12 +665,12 @@ callback | is a parameter for backward compatibility of clients running on jsonp
 ```json
 [
   {
-  "code": MOW,
+  "code": "MOW",
   "main_airport_name": null,
   "country_cases": null,
   "index_strings":[
-    maskava,
-    moscow
+    "maskava",
+    "moscow"
   ],
   "weight": 1006321,
   "cases": {
@@ -682,7 +682,7 @@ callback | is a parameter for backward compatibility of clients running on jsonp
   },
   "country_name": "Россия",
   "type": city,
-  "country_code": RU,
+  "country_code": "RU",
   "coordinates": {
     "lon": 37.617633,
     "lat": 55.755786
