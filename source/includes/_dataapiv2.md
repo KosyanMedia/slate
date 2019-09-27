@@ -681,7 +681,7 @@ callback | is a parameter for backward compatibility of clients running on jsonp
     "ro": "Москвы"
   },
   "country_name": "Россия",
-  "type": city,
+  "type": "city",
   "country_code": "RU",
   "coordinates": {
     "lon": 37.617633,
