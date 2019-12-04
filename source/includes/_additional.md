@@ -188,3 +188,112 @@ print(response.text)
     * **choose_dates_url** - the URL for chosen dates
     * **origin_iata** - the origin IATA code
     * **destination_iata** - the destination IATA code
+
+## Autocomplete API for countries, cities and airports
+To make the autocomplete of cities or airports in the search, use a query of the following form:
+
+### Request
+
+GET `http://autocomplete.travelpayouts.com/places2?term=Mos&locale=en&types[]=country&callback=function`
+
+Parameter | Description
+--------- | -----------
+term | text for searching (the main parameter);
+locale | the output language (the list of supported languages at the end of the article);
+types[] | an array that specifies the type of autocomplete search(city, airport, country);
+callback | is a parameter for backward compatibility of clients running on jsonp.
+
+### Example of response
+
+```json
+[
+  {
+  "code": "MOW",
+  "main_airport_name": null,
+  "country_cases": null,
+  "index_strings":[
+    "maskava",
+    "moscow"
+  ],
+  "weight": 1006321,
+  "cases": {
+    "da": "Москве",
+    "tv": "Москвой",
+    "vi": "в Москву",
+    "pr": "Москве",
+    "ro": "Москвы"
+  },
+  "country_name": "Россия",
+  "type": "city",
+  "country_code": "RU",
+  "coordinates": {
+    "lon": 37.617633,
+    "lat": 55.755786
+  },
+  "name": "Москва",
+  "state_code": null
+  }
+]
+```
+
+### Response parameters
+
+Parameter | Description
+--------- | -----------
+code | IATA city/airport code;
+main_airport_name | airport name (if available);
+country_cases | service parameter;
+index_strings | variants of queries in different languages ​​and in different layouts;
+weight | service parameter;
+cases | the name of the city in various cases (only for ru locale);
+country_name | name of the country;
+type | type of object (city / airport / country);
+country_code | IATA country code;
+coordinates | object's coordinates;
+name | the name of the city / airport;
+state_code | state code (if available).
+
+### Supported Languages
+
+Code | Description
+---- | -----------
+ar | Arabic;
+bg | Bulgarian;
+cs | Czech;
+da | Danish;
+de | German;
+el | Greek;
+en | English;
+es | Spanish;
+fa | Persian;
+fi | Finnish;
+fr | French;
+he | Israeli;
+hi | Indian;
+hr | Croatian;
+hu | Hungarian;
+id | Indonesian;
+it | Italian;
+ja | Japanese;
+ka | Georgian;
+ko | Korean;
+lt | Italian;
+lv | Latvia;
+ms | Malaysian;
+nl | Dutch;
+no | Norwegian;
+pl | Polish;
+pt | Portuguese;
+ro | Romanian;
+ru | Russian;
+sk | Slovak;
+sl | Slovenian;
+sr | Serbian.
+sv | Swedish;
+th | Thai;
+tl | Filipino;
+tr | Turkish;
+uk | Ukrainian;
+vi | Vietnamese;
+zh-Hans | Chinese traditional;
+zh-Hant | Chinese simplified.
